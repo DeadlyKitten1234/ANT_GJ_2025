@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "InputManager.h"
+#include "ConfigManager.h"
 
 #include <SDL.h>
 

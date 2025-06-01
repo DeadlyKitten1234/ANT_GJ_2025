@@ -10,9 +10,10 @@ Cinematic::~Cinematic() { }
 void Cinematic::init(SDL_Renderer* renderer, int screenW, int screenH) {
 	Config::readCinematicBackground(renderer, background, cropRects, screenW, screenH);
 	cropTexture = loadTexture(Config::cinematicCropPath, renderer);
+	farmerLayer = loadTexture(Config::farmerLayerPath, renderer);
 }
 
-void Cinematic::draw(SDL_Renderer* renderer) {
+bool Cinematic::draw(SDL_Renderer* renderer) {
 	double offsetX = 0, offsetY = 0;
 	if (200 <= ticks && ticks <= 300) {
 		offsetX += 15 * sin(ticks * 10 + 0.12334);
@@ -20,18 +21,22 @@ void Cinematic::draw(SDL_Renderer* renderer) {
 	}
 	if (ticks == 280) {
 		//Hole appears
-		//delete background;
-		//background = loadTexture(Config::cinematicBackgroundHolePath, renderer);
-		//int holeCenterX = 634 * Presenter::SCREEN_W / 738;
-		//int holeCenterY = 356 * Presenter::SCREEN_H / 414;
-		//for (int i = 0; i < cropRects.size(); i++) {
-		//	int dx = cropRects[i].x - holeCenterX;
-		//	int dy = (cropRects[i].y - holeCenterY) * 2;
-		//	if (dx * dx + dy * dy < 207 * 207) {
-		//		cropRects.erase(cropRects.begin() + i);
-		//		i--;
-		//	}
-		//}
+		background = loadTexture(Config::cinematicBackgroundHolePath, renderer);
+		farmerLayer = loadTexture(Config::farmerLayerPathHole, renderer);
+		double multX = (double)Presenter::SCREEN_W / 738, multY = (double)Presenter::SCREEN_H / 414;
+		int holeCenterX = 634 * multX;
+		int holeCenterY = 356 * multY;
+		for (int i = 0; i < cropRects.size(); i++) {
+			int dx = (cropRects[i].x - holeCenterX) / multX;
+			int dy = (cropRects[i].y - holeCenterY) * 1.7 / multY;
+			if (dx * dx + dy * dy < 240 * 240) {
+				cropRects.erase(cropRects.begin() + i);
+				i--;
+			}
+		}
+	}
+	if (ticks > 380) {
+		return true;
 	}
 
 	SDL_Rect backgroundRect = { offsetX, offsetY, Presenter::SCREEN_W, Presenter::SCREEN_H };
@@ -42,5 +47,7 @@ void Cinematic::draw(SDL_Renderer* renderer) {
 		SDL_Rect newRect = { cropRects[i].x + offsetX, cropRects[i].y + offsetY, cropRects[i].w, cropRects[i].h };
 		SDL_RenderCopyEx(renderer, cropTexture, NULL, &newRect, swayingAngle, &swayingPoint, SDL_FLIP_NONE);
 	}
+	Presenter::drawObject(farmerLayer, &backgroundRect);
 	ticks++;
+	return false;
 }

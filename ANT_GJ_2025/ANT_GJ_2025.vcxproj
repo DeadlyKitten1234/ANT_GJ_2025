@@ -148,6 +148,7 @@
     <ClInclude Include="..\include\Drawable.h" />
     <ClInclude Include="..\include\Farmer.h" />
     <ClInclude Include="..\include\Globals.h" />
+    <ClInclude Include="..\include\Hole.h" />
     <ClInclude Include="..\include\InputManager.h" />
     <ClInclude Include="..\include\Presenter.h" />
     <ClInclude Include="..\include\World.h" />
