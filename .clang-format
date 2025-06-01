@@ -1,0 +1,19 @@
+---
+BasedOnStyle: LLVM
+
+# does not matter technically
+IndentWidth: 2
+TabWidth: 2
+
+# indent using tabs but align using spaces
+UseTab: ForIndentation
+# force the `template` keyword on a separate line
+AlwaysBreakTemplateDeclarations: 'Yes'
+# do not force 1 line functions on a single line
+AllowShortFunctionsOnASingleLine: Empty
+# add a space in empty `{ }`
+SpaceInEmptyBlock: true
+# make pointers on the left side (`int* val;` not `int *val;`)
+PointerAlignment: Left
+
+...

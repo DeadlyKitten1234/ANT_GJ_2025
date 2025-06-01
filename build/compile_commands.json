@@ -1,0 +1,32 @@
+[
+{
+  "directory": "D:/Boril/code/proj/finished/ANT_GJ_2025/build",
+  "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\main.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\main.cpp",
+  "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\main.cpp",
+  "output": "CMakeFiles\\ANT_GJ_2025.dir\\main.cpp.obj"
+},
+{
+  "directory": "D:/Boril/code/proj/finished/ANT_GJ_2025/build",
+  "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\src\\Drawable.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Drawable.cpp",
+  "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Drawable.cpp",
+  "output": "CMakeFiles\\ANT_GJ_2025.dir\\src\\Drawable.cpp.obj"
+},
+{
+  "directory": "D:/Boril/code/proj/finished/ANT_GJ_2025/build",
+  "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\src\\Globals.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Globals.cpp",
+  "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Globals.cpp",
+  "output": "CMakeFiles\\ANT_GJ_2025.dir\\src\\Globals.cpp.obj"
+},
+{
+  "directory": "D:/Boril/code/proj/finished/ANT_GJ_2025/build",
+  "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\src\\InputManager.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\InputManager.cpp",
+  "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\InputManager.cpp",
+  "output": "CMakeFiles\\ANT_GJ_2025.dir\\src\\InputManager.cpp.obj"
+},
+{
+  "directory": "D:/Boril/code/proj/finished/ANT_GJ_2025/build",
+  "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\src\\Presenter.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Presenter.cpp",
+  "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Presenter.cpp",
+  "output": "CMakeFiles\\ANT_GJ_2025.dir\\src\\Presenter.cpp.obj"
+}
+]

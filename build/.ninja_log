@@ -1,0 +1,13 @@
+# ninja log v6
+13	160	7704663504229850	build.ninja	50217da6d8d6d9e4
+27	1610	7704662936894887	CMakeFiles/ANT_GJ_2025.dir/src/Presenter.cpp.obj	3297dfc6b174bbcc
+13	160	7704663504209847	D:/Boril/code/proj/finished/ANT_GJ_2025/build/cmake_install.cmake	50217da6d8d6d9e4
+21	1613	7704662936834893	CMakeFiles/ANT_GJ_2025.dir/src/Drawable.cpp.obj	9ffcbd7df92b4548
+23	2304	7704662936854889	CMakeFiles/ANT_GJ_2025.dir/src/Globals.cpp.obj	bc0b394b070d10f3
+18	1802	7704662936804931	CMakeFiles/ANT_GJ_2025.dir/main.cpp.obj	2079c17241d3a17c
+25	1815	7704662936874899	CMakeFiles/ANT_GJ_2025.dir/src/InputManager.cpp.obj	b11dd94ba3bf9277
+4	1314	7704663675267928	CMakeFiles/ANT_GJ_2025.dir/main.cpp.obj	2079c17241d3a17c
+17	1354	7704663730879373	CMakeFiles/ANT_GJ_2025.dir/main.cpp.obj	2079c17241d3a17c
+1354	1442	7704663744249308	D:/Boril/code/proj/finished/ANT_GJ_2025/run/ANT_GJ_2025.exe	136681b9dd691176
+17	1314	7704663850822899	CMakeFiles/ANT_GJ_2025.dir/main.cpp.obj	2079c17241d3a17c
+1315	1401	7704663863792934	D:/Boril/code/proj/finished/ANT_GJ_2025/run/ANT_GJ_2025.exe	136681b9dd691176
