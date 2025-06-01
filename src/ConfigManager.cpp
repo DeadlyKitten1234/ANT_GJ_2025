@@ -9,6 +9,7 @@ const std::string cinematicCropPath = "textures\\plant";
 const std::string farmerTexturePath = "textures\\farmer";
 const std::string farmerLayerPath = "textures\\FarmerLayer";
 const std::string farmerLayerPathHole = "textures\\FarmerLayerHole";
+const std::string holeBackgroundPath = "textures\\HoleBackground";
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH) {
 	

@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\Hole.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\src\Cinematic.cpp" />
     <ClCompile Include="..\src\ConfigManager.cpp" />
