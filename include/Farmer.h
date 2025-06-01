@@ -9,6 +9,13 @@
 
 class Farmer {
 public:
+	Farmer() {
+
+	}
+	~Farmer() {
+		SDL_DestroyTexture(texture);
+	}
+
 	enum class State {
 		STATIC = 0,
 		HANGING = 1,
