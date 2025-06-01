@@ -89,6 +89,14 @@ build CMakeFiles/ANT_GJ_2025.dir/src/Presenter.cpp.obj: CXX_COMPILER__ANT_GJ_202
   OBJECT_DIR = CMakeFiles\ANT_GJ_2025.dir
   OBJECT_FILE_DIR = CMakeFiles\ANT_GJ_2025.dir\src
 
+build CMakeFiles/ANT_GJ_2025.dir/src/Farmer.cpp.obj: CXX_COMPILER__ANT_GJ_2025_unscanned_Debug D$:/Boril/code/proj/finished/ANT_GJ_2025/src/Farmer.cpp || cmake_object_order_depends_target_ANT_GJ_2025
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\ANT_GJ_2025.dir\src\Farmer.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics
+  INCLUDES = -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2
+  OBJECT_DIR = CMakeFiles\ANT_GJ_2025.dir
+  OBJECT_FILE_DIR = CMakeFiles\ANT_GJ_2025.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ANT_GJ_2025
@@ -97,7 +105,7 @@ build CMakeFiles/ANT_GJ_2025.dir/src/Presenter.cpp.obj: CXX_COMPILER__ANT_GJ_202
 #############################################
 # Link the executable D:\Boril\code\proj\finished\ANT_GJ_2025\run\ANT_GJ_2025.exe
 
-build D$:/Boril/code/proj/finished/ANT_GJ_2025/run/ANT_GJ_2025.exe: CXX_EXECUTABLE_LINKER__ANT_GJ_2025_Debug CMakeFiles/ANT_GJ_2025.dir/main.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Drawable.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Globals.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/InputManager.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Presenter.cpp.obj
+build D$:/Boril/code/proj/finished/ANT_GJ_2025/run/ANT_GJ_2025.exe: CXX_EXECUTABLE_LINKER__ANT_GJ_2025_Debug CMakeFiles/ANT_GJ_2025.dir/main.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Drawable.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Globals.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/InputManager.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Presenter.cpp.obj CMakeFiles/ANT_GJ_2025.dir/src/Farmer.cpp.obj
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = -lSDL2  -lSDL2main  -lSDL2_mixer  -lSDL2_ttf  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
