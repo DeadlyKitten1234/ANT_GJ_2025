@@ -24,6 +24,9 @@ public:
 	int getY() {
 		return y;
 	}
+	bool isHanging() {
+		return hanging;
+	}
 
 	void init(SDL_Renderer* renderer, int screenW, int screenH) {
 		texture = loadTexture("textures\\farmer", renderer);
