@@ -52,6 +52,9 @@
     <ClInclude Include="..\include\World.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\GameState.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

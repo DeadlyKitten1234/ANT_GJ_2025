@@ -3,10 +3,7 @@
 #include "InputManager.h"
 #include "Presenter.h"
 #include "Hole.h"
-
-enum class GameState {
-	Cinematic, Gameplay
-};
+#include "GameState.h"
 
 class World {
 public:
@@ -18,6 +15,8 @@ public:
 	void update();
 
 private:
+	SDL_Texture* winScreen;
+	SDL_Texture* loseScreen;
 	InputManager inputManager;
 	Presenter presenter;
 	Cinematic cinematic;

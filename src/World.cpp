@@ -7,9 +7,11 @@ World::~World() { }
 
 void World::init() {
 	presenter.init();
+	winScreen = loadTexture(Config::winScreen, presenter.getRenderer());
+	loseScreen = loadTexture(Config::loseScreen, presenter.getRenderer());
 	cinematic.init(presenter.getRenderer(), Presenter::SCREEN_W, Presenter::SCREEN_H);
 	hole.init(presenter.getRenderer(), Presenter::SCREEN_W, Presenter::SCREEN_H);
-	state = GameState::Gameplay;
+	state = GameState::Cinematic;
 }
 
 void World::draw() {
@@ -21,6 +23,12 @@ void World::draw() {
 		break;
 	case GameState::Gameplay:
 		hole.draw(presenter.getRenderer());
+		break;
+	case GameState::Win:
+		SDL_RenderCopy(presenter.getRenderer(), winScreen, NULL, NULL);
+		break;
+	case GameState::Lose:
+		SDL_RenderCopy(presenter.getRenderer(), loseScreen, NULL, NULL);
 		break;
 	default:
 		return;
@@ -34,7 +42,11 @@ void World::update() {
 	case GameState::Cinematic:
 		break;
 	case GameState::Gameplay:
-		hole.update(inputManager);
+		hole.update(inputManager, state);
+		break;
+	case GameState::Win:
+		break;
+	case GameState::Lose:
 		break;
 	default:
 		return;

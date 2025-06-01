@@ -17,6 +17,8 @@ const std::string levelPath = "assets\\level.txt";
 const std::string winScreen = "textures\\win";
 const std::string loseScreen = "textures\\lose";
 const std::string holeTop = "textures\\HoleTop";
+const std::string catPath = "textures\\cat";
+
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH) {
 	
