@@ -17,6 +17,7 @@ public:
 	int2 mouseCoord;
 
 	bool rightArrow;
+	bool downArrow;
 	bool leftArrow;
 	bool space;
 

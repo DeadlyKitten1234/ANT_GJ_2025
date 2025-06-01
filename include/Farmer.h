@@ -92,6 +92,9 @@ public:
 				hanging = false;
 			}
 		}
+		if (input.downArrow) {
+			hanging = false;
+		}
 		if (!somethingPressed) {
 			moveCooldown = false;
 		}

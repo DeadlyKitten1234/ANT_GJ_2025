@@ -22,4 +22,6 @@ private:
 	Cinematic cinematic;
 	GameState state;
 	Hole hole;
+	int curEndTicks;
+	int endTicks = 200;
 };

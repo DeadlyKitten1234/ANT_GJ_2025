@@ -13,6 +13,7 @@ void InputManager::getInput() {
 
 	rightArrow = false;
 	leftArrow = false;
+	downArrow = false;
 	space = false;
 
     SDL_Event event;
@@ -53,6 +54,9 @@ void InputManager::getInput() {
 	}
 	if (key[SDL_SCANCODE_LEFT]) {
 		leftArrow = true;
+	}
+    if (key[SDL_SCANCODE_DOWN]) {
+        downArrow = true;
 	}
 	if (key[SDL_SCANCODE_SPACE]) {
 		space = true;

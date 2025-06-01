@@ -20,12 +20,19 @@ public:
 		farmer.init(renderer, screenW, screenH);
 		Config::readLevel(grips, farmer.getXRef(), farmer.getYRef(), fieldW, fieldH, tileSize);
 		lastGripY = farmer.getY();
+		stX = farmer.getX();
+		stY = farmer.getY();
 		lastGrip = { -1, -1 };
 	}
+	void reset() {
+		farmer.setX(stX);
+		farmer.setY(stY);
+	}
+
 	void draw(SDL_Renderer* renderer) {
 		SDL_Rect topRect = { 0, -farmer.getY() * tileSize - Presenter::SCREEN_H / 2, Presenter::SCREEN_W, Presenter::SCREEN_H };
 		Presenter::drawObject(topTexture, &topRect);
-		for (int x = 0; x < fieldW; x++) {
+		for (int x = 0; x < fieldW + 1; x++) {
 			for (int y = 0; y < fieldH; y++) {
 				SDL_Rect rect = {
 				    x * tileSize,
@@ -105,6 +112,7 @@ private:
 	int fieldW;
 	int fieldH;
 	int tileSize;
+	int stX, stY;
 	float deathYDif = 6;
 	float lastGripY;
 	int2 lastGrip;

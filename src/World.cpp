@@ -45,10 +45,17 @@ void World::update() {
 		hole.update(inputManager, state);
 		break;
 	case GameState::Win:
+		curEndTicks++;
 		break;
 	case GameState::Lose:
+		curEndTicks++;
 		break;
 	default:
 		return;
+	}
+	if (curEndTicks >= endTicks) {
+		curEndTicks = 0;
+		hole.reset();
+		state = GameState::Gameplay;
 	}
 }
