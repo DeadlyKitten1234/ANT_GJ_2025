@@ -1,7 +1,6 @@
 #pragma once 
 
 #include <SDL_TTF.h>
-#include "Drawable.h"
 
 class Presenter {
 public:
@@ -24,5 +23,4 @@ public:
 		drawObject(texture, rect, 0);
 	}
     static void drawObject(SDL_Texture* texture, SDL_Rect* rect, double angle);
-    static void drawObject(const Drawable& drawable);
 };

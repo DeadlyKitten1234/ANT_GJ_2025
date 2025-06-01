@@ -27,7 +27,3 @@ void Presenter::draw() {
 void Presenter::drawObject(SDL_Texture* texture, SDL_Rect* rect, double angle) {
 	SDL_RenderCopyEx(mainRenderer, texture, NULL, (rect == nullptr ? NULL : rect), angle, NULL, SDL_FLIP_NONE);
 }
-
-void Presenter::drawObject(const Drawable& drawable) {
-    SDL_RenderCopy(mainRenderer, drawable.texture, NULL, &drawable.rect);
-}
