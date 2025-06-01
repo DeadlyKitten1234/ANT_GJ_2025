@@ -8,6 +8,14 @@
 
 class HealthBar {
 public:
+	HealthBar() {
+
+	}
+	~HealthBar() {
+		SDL_DestroyTexture(heartTexture);
+		SDL_DestroyTexture(brokenHeartTexture);
+	}
+
 	static constexpr int HEARTS_COUNT = 5;
 
 	int getLives() {

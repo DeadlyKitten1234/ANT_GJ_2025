@@ -11,7 +11,15 @@
 class Hole {
 public:
 	Hole() { }
-	~Hole() { }
+	~Hole() {
+		SDL_DestroyTexture(bgrTexture);
+		SDL_DestroyTexture(floorTexture);
+		SDL_DestroyTexture(gripTexture);
+		SDL_DestroyTexture(topTexture);
+		SDL_DestroyTexture(catTexture);
+		SDL_DestroyTexture(slipperyTexture);
+		SDL_DestroyTexture(checkpointTexture);
+	}
 
 	void init(SDL_Renderer* renderer, int screenW, int screenH) {
 		bgrTexture = loadTexture(Config::holeBackgroundPath, renderer);
