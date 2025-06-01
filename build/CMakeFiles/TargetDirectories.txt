@@ -1,7 +1,0 @@
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/ANT_GJ_2025.dir
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/edit_cache.dir
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/rebuild_cache.dir
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/list_install_components.dir
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/install.dir
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/install/local.dir
-D:/Boril/code/proj/finished/ANT_GJ_2025/build/CMakeFiles/install/strip.dir
