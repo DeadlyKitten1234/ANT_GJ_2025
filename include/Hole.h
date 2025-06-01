@@ -93,7 +93,7 @@ public:
 		} else {
 			ticksHanging = 0;
 		}
-		if (isOnSlippery && ticksHanging > 50) {
+		if (isOnSlippery && ticksHanging > 35) {
 			farmer.setHanging(false);
 		}
 		if (!isFarmerDead()) {
