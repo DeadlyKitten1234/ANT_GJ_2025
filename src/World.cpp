@@ -15,12 +15,15 @@ void World::init() {
 void World::draw() {
 	switch (state) { 
 	case GameState::Cinematic:
-		cinematic.draw(presenter.getRenderer());
+		if (cinematic.draw(presenter.getRenderer())) {
+			state = GameState::Gameplay;
+		}
 		break;
+	case GameState::Gameplay:
+		farmer.draw(presenter.getRenderer());
 	default:
 		return;
 	}
-	farmer.draw(presenter.getRenderer());
 	presenter.draw();
 }
 

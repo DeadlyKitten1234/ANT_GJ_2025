@@ -2,6 +2,7 @@
 
 #include "Globals.h"
 #include "InputManager.h"
+#include "ConfigManager.h"
 
 #include <SDL.h>
 
@@ -15,7 +16,7 @@ public:
 	};
 
 	void init(SDL_Renderer* renderer, int screenW, int screenH) {
-		texture = loadTexture("textures\\farmer", renderer);
+		texture = loadTexture(Config::farmerTexturePath, renderer);
 		rect.w = 32;
 		rect.h = 48;
 		rect.x = (screenW - rect.w) / 2;
