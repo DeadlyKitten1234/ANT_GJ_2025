@@ -15,9 +15,10 @@ extern const std::string farmerLayerPath;
 extern const std::string farmerLayerPathHole;
 extern const std::string holeBackgroundPath;
 extern const std::string levelPath;
+extern const std::string holeFloorPath;
 
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH);
 
-void readLevel(int screenW, std::vector<SDL_Rect>& rects, int& stPosX, int& stPosY, int& bottomY, int& tileSzOut);
+void readLevel(int screenW, std::vector<SDL_Rect>& rects, int& stPosX, double& stPosY, int& bottomY, int& tileSzOut);
 }; // namespace Config

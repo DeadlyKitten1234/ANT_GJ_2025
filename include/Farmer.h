@@ -15,6 +15,12 @@ public:
 		FALLING = 3,
 	};
 
+	int& getXRef() {
+		return rect.x;
+	}
+	double& getYRef() {
+		return y;
+	}
 	int getY() {
 		return y;
 	}

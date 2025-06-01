@@ -10,6 +10,7 @@ const std::string farmerTexturePath = "textures\\farmer";
 const std::string farmerLayerPath = "textures\\FarmerLayer";
 const std::string farmerLayerPathHole = "textures\\FarmerLayerHole";
 const std::string holeBackgroundPath = "textures\\HoleBackground";
+const std::string holeFloorPath = "textures\\HoleFloor";
 const std::string levelPath = "assets\\level.txt";
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH) {
@@ -51,7 +52,7 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
 	}
 	in.close();
 }
-void readLevel(int screenW, std::vector<SDL_Rect>& rects, int& stPosX, int& stPosY, int& bottomY, int& tileSzOut) {
+void readLevel(int screenW, std::vector<SDL_Rect>& rects, int& stPosX, double& stPosY, int& bottomY, int& tileSzOut) {
 	std::ifstream in(levelPath);
 	int screenInTiles, levelW, levelH;
 	in >> screenInTiles >> levelW >> levelH;
