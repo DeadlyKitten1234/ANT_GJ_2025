@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
-    <ClCompile Include="..\src\Drawable.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Globals.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -28,9 +25,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Drawable.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Globals.h">
       <Filter>include</Filter>
     </ClInclude>

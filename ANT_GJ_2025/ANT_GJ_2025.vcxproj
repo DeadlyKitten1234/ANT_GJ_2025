@@ -136,7 +136,6 @@
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\src\Cinematic.cpp" />
     <ClCompile Include="..\src\ConfigManager.cpp" />
-    <ClCompile Include="..\src\Drawable.cpp" />
     <ClCompile Include="..\src\Globals.cpp" />
     <ClCompile Include="..\src\InputManager.cpp" />
     <ClCompile Include="..\src\Presenter.cpp" />
@@ -146,7 +145,6 @@
   <ItemGroup>
     <ClInclude Include="..\include\Cinematic.h" />
     <ClInclude Include="..\include\ConfigManager.h" />
-    <ClInclude Include="..\include\Drawable.h" />
     <ClInclude Include="..\include\Farmer.h" />
     <ClInclude Include="..\include\GameState.h" />
     <ClInclude Include="..\include\Globals.h" />

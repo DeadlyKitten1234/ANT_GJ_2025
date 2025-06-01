@@ -6,7 +6,11 @@
 
 Cinematic::Cinematic() { }
 
-Cinematic::~Cinematic() { }
+Cinematic::~Cinematic() {
+	SDL_DestroyTexture(background);
+	SDL_DestroyTexture(cropTexture);
+	SDL_DestroyTexture(farmerLayer);
+}
 
 void Cinematic::init(SDL_Renderer* renderer, int screenW, int screenH) {
 	Config::readCinematicBackground(renderer, background, cropRects, screenW, screenH);
@@ -22,6 +26,8 @@ bool Cinematic::draw(SDL_Renderer* renderer) {
 	}
 	if (ticks == 280) {
 		//Hole appears
+		SDL_DestroyTexture(background);
+		SDL_DestroyTexture(farmerLayer);
 		background = loadTexture(Config::cinematicBackgroundHolePath, renderer);
 		farmerLayer = loadTexture(Config::farmerLayerPathHole, renderer);
 		double multX = (double)Presenter::SCREEN_W / 738, multY = (double)Presenter::SCREEN_H / 414;
