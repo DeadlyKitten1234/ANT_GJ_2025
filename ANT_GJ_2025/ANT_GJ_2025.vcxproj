@@ -140,6 +140,7 @@
     <ClCompile Include="..\src\Globals.cpp" />
     <ClCompile Include="..\src\InputManager.cpp" />
     <ClCompile Include="..\src\Presenter.cpp" />
+    <ClCompile Include="..\src\Random.cpp" />
     <ClCompile Include="..\src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="..\include\Hole.h" />
     <ClInclude Include="..\include\InputManager.h" />
     <ClInclude Include="..\include\Presenter.h" />
+    <ClInclude Include="..\include\Random.h" />
     <ClInclude Include="..\include\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

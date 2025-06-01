@@ -1,6 +1,7 @@
 #include "Cinematic.h"
 #include "ConfigManager.h"
 #include "Presenter.h"
+#include "Random.h"
 #include <iostream>
 
 Cinematic::Cinematic() { }
@@ -16,8 +17,8 @@ void Cinematic::init(SDL_Renderer* renderer, int screenW, int screenH) {
 bool Cinematic::draw(SDL_Renderer* renderer) {
 	double offsetX = 0, offsetY = 0;
 	if (200 <= ticks && ticks <= 300) {
-		offsetX += 15 * sin(ticks * 10 + 0.12334);
-		offsetY += 15 * sin(ticks * 10);
+		offsetX += 60 * (rng.rand() - 0.5);
+		offsetY += 60 * (rng.rand() - 0.5);
 	}
 	if (ticks == 280) {
 		//Hole appears
