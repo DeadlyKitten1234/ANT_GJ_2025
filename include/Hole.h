@@ -1,5 +1,5 @@
 #pragma once
-#include <Farmer.h>
+#include "Farmer.h"
 #include <SDL.h>
 #include <iostream>
 #include <vector>
@@ -84,10 +84,8 @@ public:
 		if (isOnSlippery && ticksHanging > 50) {
 			farmer.setHanging(false);
 		}
-		if (farmer.getY() - lastGripY < deathYDif) {
-			for (Grip gr : grips) {
 		if (!isFarmerDead()) {
-			for (int2 gr : grips) {
+			for (Grip gr : grips) {
 				SDL_Rect collisionRect
 				    = {gr.pos.x * tileSize, gr.pos.y * tileSize, tileSize, tileSize};
 				collisionRect.y
