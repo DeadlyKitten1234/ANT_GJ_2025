@@ -14,6 +14,7 @@ public:
 		HANGING = 1,
 		JUMPING = 2,
 		FALLING = 3,
+		DEAD = 4,
 	};
 
 	float getX() const {
@@ -109,10 +110,12 @@ public:
 			pos.y += velocityY;
 		}
 	}
-	void draw(SDL_Renderer* renderer, int tileSize) {
+	void draw(SDL_Renderer* renderer, bool dead, int tileSize) {
 		State state;
 		if (hanging) {
 			state = State::HANGING;
+		} else if (dead) {
+			state = State::DEAD;
 		} else {
 			if (velocityY > 0) {
 				state = State::FALLING;
@@ -146,6 +149,8 @@ private:
 			return {32, 0, 32, 48};
 		case State::FALLING:
 			return {32, 48, 32, 48};
+		case State::DEAD:
+			return {0, 96, 32, 48};
 		}
 		return {-1, -1, 1, 1};
 	}
