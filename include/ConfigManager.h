@@ -20,6 +20,7 @@ extern const std::string gripPath;
 extern const std::string catPath;
 extern const std::string winScreen;
 extern const std::string loseScreen;
+extern const std::string holeTop;
 
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW,
