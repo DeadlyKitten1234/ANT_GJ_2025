@@ -14,6 +14,7 @@ extern const std::string farmerTexturePath;
 extern const std::string farmerLayerPath;
 extern const std::string farmerLayerPathHole;
 extern const std::string holeBackgroundPath;
+extern const std::string levelPath;
 
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH);
