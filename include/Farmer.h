@@ -35,12 +35,16 @@ public:
 			}
 		} 
 		if (input.rightArrow) {
-			rect.x += 10;
+			if (rect.x < Presenter::SCREEN_W - rect.w - 10) {
+				rect.x += 10;
+			}
 			right = true;
 			hanging = false;
 		}
 		if (input.leftArrow) {
-			rect.x -= 10;
+			if (rect.x > 10) {
+				rect.x -= 10;
+			}
 			right = false;
 			hanging = false;
 		}
