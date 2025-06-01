@@ -96,7 +96,7 @@ public:
 			}
 		}
 		farmer.update(inputManager);
-		if (farmer.getY() > fieldH) {
+		if (farmer.getY() + 2.5 > fieldH) {
 			gameState = GameState::Win;
 			return;
 		}
@@ -113,7 +113,7 @@ private:
 	int fieldH;
 	int tileSize;
 	int stX, stY;
-	float deathYDif = 6;
+	float deathYDif = 600;
 	float lastGripY;
 	int2 lastGrip;
 
