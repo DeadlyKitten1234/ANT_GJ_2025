@@ -28,11 +28,5 @@
   "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\src\\Presenter.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Presenter.cpp",
   "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Presenter.cpp",
   "output": "CMakeFiles\\ANT_GJ_2025.dir\\src\\Presenter.cpp.obj"
-},
-{
-  "directory": "D:/Boril/code/proj/finished/ANT_GJ_2025/build",
-  "command": "D:\\Tools\\msys\\ucrt64\\bin\\clang++.exe -ID:/Boril/code/proj/finished/ANT_GJ_2025/include -ID:/Tools/msys/ucrt64/include/SDL2 -g -std=gnu++23 -fansi-escape-codes -fcolor-diagnostics -o CMakeFiles\\ANT_GJ_2025.dir\\src\\Farmer.cpp.obj -c D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Farmer.cpp",
-  "file": "D:\\Boril\\code\\proj\\finished\\ANT_GJ_2025\\src\\Farmer.cpp",
-  "output": "CMakeFiles\\ANT_GJ_2025.dir\\src\\Farmer.cpp.obj"
 }
 ]

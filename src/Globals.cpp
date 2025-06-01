@@ -3,7 +3,7 @@
 #include <iostream>
 
 SDL_Texture* loadTexture(string in, SDL_Renderer* renderer) {
-	in = "assets\\img\\" + in + ".bmp";
+	in = "assets\\" + in + ".bmp";
 	SDL_Surface* loadingSurface = SDL_LoadBMP(in.c_str());
 	SDL_Texture* out = nullptr;
 	out = SDL_CreateTextureFromSurface(renderer, loadingSurface);

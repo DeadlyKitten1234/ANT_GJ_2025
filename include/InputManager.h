@@ -16,5 +16,11 @@ public:
 	bool quit;
 	int2 mouseCoord;
 
+	bool rightArrow;
+	bool leftArrow;
+	bool space;
+
+	const Uint8* key = nullptr;
+
 	void getInput();
 };

@@ -22,7 +22,6 @@ set(SOURCES
 	./src/Globals.cpp
 	./src/InputManager.cpp
 	./src/Presenter.cpp
-	./src/Farmer.cpp
 )
 
 # Additional include directories
