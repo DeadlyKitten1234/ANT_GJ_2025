@@ -7,6 +7,7 @@
 
 namespace Config {
 extern const std::string cinematicBackgroundPath;
+extern const std::string cinematicLocationsPath;
 extern const std::string cinematicCropPath;
 
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,

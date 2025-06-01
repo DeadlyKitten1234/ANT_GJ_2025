@@ -6,6 +6,11 @@ using std::string;
 SDL_Texture* loadTexture(string in, SDL_Renderer* renderer);
 SDL_Texture* loadText(SDL_Renderer* renderer, const string& text);
 
+template<typename T>
+T lerp(double t, T a, T b) {
+	return t * a + (1 - t) * b;
+}
+
 struct float2 {
 	float2() { x = y = 0; }
 	float2(float x_, float y_) { x = x_; y = y_; };
