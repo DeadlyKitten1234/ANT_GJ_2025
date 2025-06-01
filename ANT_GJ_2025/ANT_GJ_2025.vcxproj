@@ -150,6 +150,7 @@
     <ClInclude Include="..\include\Farmer.h" />
     <ClInclude Include="..\include\GameState.h" />
     <ClInclude Include="..\include\Globals.h" />
+    <ClInclude Include="..\include\Grip.h" />
     <ClInclude Include="..\include\Hole.h" />
     <ClInclude Include="..\include\InputManager.h" />
     <ClInclude Include="..\include\Presenter.h" />

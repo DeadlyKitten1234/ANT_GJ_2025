@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include "Globals.h"
+#include "Grip.h"
 
 namespace Config {
 extern const std::string cinematicBackgroundPath;
@@ -26,6 +27,6 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW,
                              int screenH);
 
-void readLevel(std::vector<int2>& rects, float& stPosX, float& stPosY,
+void readLevel(std::vector<Grip>& rects, float& stPosX, float& stPosY,
                int& fieldW, int& fieldH, int& tileSzOut);
 } // namespace Config

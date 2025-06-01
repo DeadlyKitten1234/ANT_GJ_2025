@@ -31,10 +31,14 @@ public:
 	bool isHanging() {
 		return hanging;
 	}
-	void setHanging() {
-		hanging = true;
-		velocityY = 0;
-		moveCooldown = true;
+	void setHanging(bool val) {
+		if (val) {
+			hanging = true;
+			velocityY = 0;
+			moveCooldown = true;
+		} else {
+			hanging = false;
+		}
 	}
 	void setX(float x) {
 		pos.x = x;

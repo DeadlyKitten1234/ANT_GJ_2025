@@ -5,6 +5,7 @@
 #include <vector>
 #include <cmath>
 #include "GameState.h"
+#include "Grip.h"
 
 class Hole {
 public:
@@ -23,10 +24,16 @@ public:
 		stX = farmer.getX();
 		stY = farmer.getY();
 		lastGrip = { -1, -1 };
+		ticksHanging = 0;
+		isOnSlippery = false;
 	}
 	void reset() {
 		farmer.setX(stX);
 		farmer.setY(stY);
+		lastGrip = { -1, -1 };
+		lastGripY = farmer.getY();
+		ticksHanging = 0;
+		isOnSlippery = false;
 	}
 
 	void draw(SDL_Renderer* renderer) {
@@ -56,8 +63,8 @@ public:
 		                 (fieldH - 1 - farmer.getY()) * tileSize + Presenter::SCREEN_H / 2,
 		                 tileSize, tileSize};
 		SDL_RenderCopy(renderer, catTexture, NULL, &rect);
-		for (int2 gr : grips) {
-			SDL_Rect newRect = { gr.x * tileSize, gr.y * tileSize, tileSize, tileSize };
+		for (Grip gr : grips) {
+			SDL_Rect newRect = { gr.pos.x * tileSize, gr.pos.y * tileSize, tileSize, tileSize };
 			newRect.y += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
 			Presenter::drawObject(gripTexture, &newRect);
 		}
@@ -66,18 +73,24 @@ public:
 	void update(const InputManager& inputManager, GameState& gameState) {
 		if (farmer.isHanging()) {
 			lastGripY = farmer.getY();
+			ticksHanging++;
+		} else {
+			ticksHanging = 0;
+		}
+		if (isOnSlippery && ticksHanging > 50) {
+			farmer.setHanging(false);
 		}
 		if (farmer.getY() - lastGripY < deathYDif) {
-			for (int2 gr : grips) {
+			for (Grip gr : grips) {
 				SDL_Rect collisionRect
-				    = {gr.x * tileSize, gr.y * tileSize, tileSize, tileSize};
+				    = {gr.pos.x * tileSize, gr.pos.y * tileSize, tileSize, tileSize};
 				collisionRect.y
 				    += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
 				collisionRect.x += collisionRect.w / 4;
 				collisionRect.y += collisionRect.h / 4;
 				collisionRect.w /= 2;
 				collisionRect.h /= 2;
-				if (gr == lastGrip) {
+				if (gr.pos == lastGrip) {
 					if (!rectCollision(farmer.getCollisionRect(tileSize),
 					                   collisionRect)) {
 						lastGrip = int2(-1, -1);
@@ -88,11 +101,12 @@ public:
 
 				if (rectCollision(farmer.getCollisionRect(tileSize),
 				                  collisionRect)) {
-					farmer.setHanging();
-					farmer.setX(gr.x + 0.5);
-					farmer.setY(gr.y + 0.5);
-					lastGrip = gr;
-					lastGripY = gr.y;
+					farmer.setHanging(true);
+					farmer.setX(gr.pos.x + 0.5);
+					farmer.setY(gr.pos.y + 0.5);
+					lastGrip = gr.pos;
+					lastGripY = gr.pos.y;
+					isOnSlippery = gr.isSlippery;
 				}
 			}
 		}
@@ -113,10 +127,12 @@ private:
 	int fieldW;
 	int fieldH;
 	int tileSize;
+	int ticksHanging;
+	bool isOnSlippery;
 	int stX, stY;
 	float deathYDif = 6;
 	float lastGripY;
 	int2 lastGrip;
 
-	std::vector<int2> grips;
+	std::vector<Grip> grips;
 };
