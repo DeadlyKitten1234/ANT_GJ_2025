@@ -15,48 +15,51 @@ public:
 		FALLING = 3,
 	};
 
-	int& getXRef() {
-		return rect.x;
+	float getX() const {
+		return pos.x;
 	}
-	double& getYRef() {
-		return y;
+	float getY() const {
+		return pos.y;
 	}
-	int getY() {
-		return y;
+	float& getXRef() {
+		return pos.x;
+	}
+	float& getYRef() {
+		return pos.y;
 	}
 
 	void init(SDL_Renderer* renderer, int screenW, int screenH) {
 		texture = loadTexture("textures\\farmer", renderer);
-		rect.w = 96;
-		rect.h = 144;
-		rect.x = (screenW - rect.w) / 2;
-		rect.y = (screenH - rect.y) / 2;
+		pos.x = 0;
+		pos.y = 0;
+		size.x = 2;
+		size.y = 4;
+		//rect.w = 96;
+		//rect.h = 144;
+		//rect.x = (screenW - rect.w) / 2;
+		//rect.y = (screenH - rect.y) / 2;
 	}
 
 	void update(const InputManager& input) {
 		if (hanging) {
 			if (input.space) {
-				velocityY = -15;
+				velocityY = -2;
 				hanging = false;
 			}
 		} 
 		if (input.rightArrow) {
-			if (rect.x < Presenter::SCREEN_W - rect.w - 10) {
-				rect.x += 10;
-			}
+			pos.x += 5;
 			right = true;
 			hanging = false;
 		}
 		if (input.leftArrow) {
-			if (rect.x > 10) {
-				rect.x -= 10;
-			}
+			pos.x -= 5;
 			right = false;
 			hanging = false;
 		}
 		if (!hanging) {
-			velocityY += 0.5;
-			y += velocityY;
+			velocityY += 0.1;
+			pos.y += velocityY;
 		}
 	}
 	void draw(SDL_Renderer* renderer) {
@@ -78,9 +81,9 @@ public:
 private:
 	SDL_Texture* texture;
 
-	double velocityY;
-	double y = 0;
-	SDL_Rect rect;
+	float2 pos;
+	float2 size;
+	float velocityY;
 	bool hanging = true;
 	bool right = true;
 
