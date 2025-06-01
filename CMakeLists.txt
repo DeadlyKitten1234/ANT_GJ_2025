@@ -22,7 +22,9 @@ set(SOURCES
 	./src/Globals.cpp
 	./src/InputManager.cpp
 	./src/Presenter.cpp
-	./src/Farmer.cpp
+	./src/World.cpp
+	./src/ConfigManager.cpp
+	./src/Cinematic.cpp
 )
 
 # Additional include directories

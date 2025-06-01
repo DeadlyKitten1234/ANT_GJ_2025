@@ -1,4 +1,5 @@
 #include "InputManager.h"
+#include "SDL_scancode.h"
 
 InputManager::InputManager() { quit = false; }
 
@@ -9,7 +10,14 @@ void InputManager::getInput() {
     mouseMoved = false;
     mouseReleased = false;
     keyReleased = false;
+
+	rightArrow = false;
+	leftArrow = false;
+	space = false;
+
     SDL_Event event;
+
+	key = SDL_GetKeyboardState(NULL);
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
         case SDL_QUIT:
@@ -39,4 +47,14 @@ void InputManager::getInput() {
             break;
         }
     }
+
+	if (key[SDL_SCANCODE_RIGHT]) {
+		rightArrow = true;
+	}
+	if (key[SDL_SCANCODE_LEFT]) {
+		leftArrow = true;
+	}
+	if (key[SDL_SCANCODE_SPACE]) {
+		space = true;
+	}
 }
