@@ -57,7 +57,7 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
 	in.close();
 }
 
-void readLevel(std::vector<SDL_Rect>& rects, float& stPosX, float& stPosY, int& fieldW, int& fieldH, int& tileSzOut) {
+void readLevel(std::vector<int2>& rects, float& stPosX, float& stPosY, int& fieldW, int& fieldH, int& tileSzOut) {
 	std::ifstream in(levelPath);
 	int screenInTiles, levelW, levelH;
 	in >> screenInTiles >> levelW >> levelH;
@@ -70,8 +70,7 @@ void readLevel(std::vector<SDL_Rect>& rects, float& stPosX, float& stPosY, int& 
 			char cur;
 			in >> cur;
 			if (cur == 'O' || cur == '#') {
-				SDL_Rect newRect = { int(j * tileSz), int(i * tileSz), int(tileSz), int(tileSz) };
-				rects.push_back(newRect);
+				rects.push_back(int2(j, i));
 			}
 			if (cur == 'O') {
 				stPosX = j + 0.5;

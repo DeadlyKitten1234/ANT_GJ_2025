@@ -31,11 +31,36 @@ public:
 	bool isHanging() {
 		return hanging;
 	}
+	void setHanging() {
+		hanging = true;
+		velocityY = 0;
+		moveCooldown = true;
+	}
+	void setX(float x) {
+		pos.x = x;
+	}
+	void setY(float y) {
+		pos.y = y;
+	}
+
+	SDL_Rect getRect(int tileSize) {
+		SDL_Rect rect = { 0, 0, 64, 96 };
+		rect.x = pos.x * tileSize - rect.w / 2;
+		rect.y = (Presenter::SCREEN_H - rect.h) / 2 + rect.h / 2;
+		return rect;
+	}
+	SDL_Rect getCollisionRect(int tileSize) {
+		SDL_Rect rect = { 0, 0, 48, 16 };
+		rect.x = pos.x * tileSize - rect.w / 2;
+		rect.y = (Presenter::SCREEN_H - rect.h) / 2 + rect.h / 2;
+		return rect;
+	}
 
 	void init(SDL_Renderer* renderer, int screenW, int screenH) {
 		texture = loadTexture("textures\\farmer", renderer);
 		size.x = 2;
 		size.y = 4;
+		moveCooldown = false;
 		//rect.w = 96;
 		//rect.h = 144;
 		//rect.x = (screenW - rect.w) / 2;
@@ -43,21 +68,34 @@ public:
 	}
 
 	void update(const InputManager& input) {
-		if (hanging) {
-			if (input.space) {
-				velocityY = -0.45;
-				hanging = false;
+		bool somethingPressed = false;
+		if (input.space) {
+			if (hanging) {
+			somethingPressed = true;
+				if (!moveCooldown) {
+					velocityY = -0.45;
+					hanging = false;
+				}
 			}
 		} 
 		if (input.rightArrow) {
-			pos.x += 0.2;
-			right = true;
-			hanging = false;
+			somethingPressed = true;
+			if (!moveCooldown) {
+				pos.x += 0.2;
+				right = true;
+				hanging = false;
+			}
 		}
 		if (input.leftArrow) {
-			pos.x -= 0.2;
-			right = false;
-			hanging = false;
+			somethingPressed = true;
+			if (!moveCooldown) {
+				pos.x -= 0.2;
+				right = false;
+				hanging = false;
+			}
+		}
+		if (!somethingPressed) {
+			moveCooldown = false;
 		}
 		if (!hanging) {
 			velocityY += 0.02;
@@ -75,11 +113,8 @@ public:
 				state = State::JUMPING;
 			}
 		}
-		std::cout << pos.y << '\n';
 		SDL_Rect srcRect = getSrcRect(state);
-		SDL_Rect rect = {0, 0, 64, 96};
-		rect.x = pos.x * tileSize - rect.w / 2;
-		rect.y = (Presenter::SCREEN_H - rect.h) / 2 + rect.h / 2;
+		SDL_Rect rect = getRect(tileSize);
 		SDL_RenderCopyEx(renderer, texture, &srcRect, &rect,
 			0, NULL, right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL);
 	}
@@ -92,6 +127,7 @@ private:
 	float velocityY;
 	bool hanging = true;
 	bool right = true;
+	bool moveCooldown;
 
 	static SDL_Rect getSrcRect(State state) {
 		switch (state) {

@@ -18,6 +18,7 @@ public:
 		Config::readLevel(grips, farmer.getXRef(),
 		                  farmer.getYRef(), fieldW, fieldH, tileSize);
 		lastGripY = farmer.getY();
+		lastGrip = { -1, -1 };
 	}
 	void draw(SDL_Renderer* renderer) {
 		for (int x = 0; x < fieldW; x++) {
@@ -31,8 +32,8 @@ public:
 				SDL_RenderCopy(renderer, bgrTexture, NULL, &rect);
 			}
 		}
-		for (SDL_Rect gr : grips) {
-			SDL_Rect newRect = gr;
+		for (int2 gr : grips) {
+			SDL_Rect newRect = { gr.x * tileSize, gr.y * tileSize, tileSize, tileSize };
 			newRect.y += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
 			Presenter::drawObject(gripTexture, &newRect);
 		}
@@ -46,6 +47,22 @@ public:
 				return;
 			}
 		}
+		for (int2 gr : grips) {
+			if (gr == lastGrip) { continue; }
+			SDL_Rect collisionRect = { gr.x * tileSize, gr.y * tileSize, tileSize, tileSize };
+			collisionRect.y += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
+			collisionRect.x += collisionRect.w / 4;
+			collisionRect.y += collisionRect.h / 4;
+			collisionRect.w /= 2;
+			collisionRect.h /= 2;
+			if (rectCollision(farmer.getCollisionRect(tileSize), collisionRect)) {
+				farmer.setHanging();
+				farmer.setX(gr.x + 0.5);
+				farmer.setY(gr.y + 0.5);
+				lastGrip = gr;
+				lastGripY = gr.y;
+			}
+		}
 		farmer.update(inputManager);
 	}
 
@@ -57,8 +74,9 @@ private:
 	int fieldW;
 	int fieldH;
 	int tileSize;
-	float deathYDif = 3.9;
+	float deathYDif = 5;
 	float lastGripY;
+	int2 lastGrip;
 
-	std::vector<SDL_Rect> grips;
+	std::vector<int2> grips;
 };

@@ -21,6 +21,10 @@ struct float2 {
 struct int2 {
 	int2() { x = y = 0; }
 	int2(int x_, int y_) { x = x_; y = y_; };
+	bool operator==(const int2& rhs) {
+		return x == rhs.x && y == rhs.y;
+	}
+
 	int x;
 	int y;
 };
