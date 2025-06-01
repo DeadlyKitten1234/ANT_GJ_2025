@@ -1,10 +1,12 @@
 #include <iostream>
+#include "World.h"
 #include <SDL.h>
 
 #undef main
 
+World* world;
+
 int main(int argc, char* argv[]) {
-	std::cout << "Hello, pac!" << std::endl;
 
 	return 0;
 }

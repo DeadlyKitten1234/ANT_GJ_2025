@@ -8,8 +8,8 @@ public:
     static SDL_Window* mainWindow;
     static SDL_Renderer* mainRenderer;
 
-    static unsigned int SCREEN_WIDTH;
-    static unsigned int SCREEN_HEIGHT;
+    static unsigned int SCREEN_W;
+    static unsigned int SCREEN_H;
     static SDL_Texture* BACKGROUND_TEXTURE;
 
     void init();

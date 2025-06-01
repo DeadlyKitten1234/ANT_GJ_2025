@@ -3,7 +3,7 @@
 
 namespace Config {
 const std::string cinematicBackgroundPath = "CinematicBackground";
-const std::string cinematicCropPath = "textures\\farmer";
+const std::string cinematicCropPath = "textures\\plant";
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture* out,
                              std::vector<SDL_Rect>& cropRect, int screenW,
                              int screenH) {
