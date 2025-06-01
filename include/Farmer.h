@@ -42,6 +42,9 @@ public:
 	void setY(float y) {
 		pos.y = y;
 	}
+	float getVelocityY() {
+		return velocityY;
+	}
 
 	SDL_Rect getRect(int tileSize) {
 		SDL_Rect rect = { 0, 0, 64, 96 };
