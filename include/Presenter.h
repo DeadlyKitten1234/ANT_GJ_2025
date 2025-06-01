@@ -17,6 +17,6 @@ public:
 
     SDL_Renderer* getRenderer() const { return mainRenderer; }
 
-    static void drawObject(SDL_Texture* texture);
+    static void drawObject(SDL_Texture* texture, SDL_Rect* rect = nullptr, double angle = 0);
     static void drawObject(const Drawable& drawable);
 };
