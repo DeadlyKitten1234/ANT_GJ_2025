@@ -70,36 +70,38 @@ public:
 		//rect.y = (screenH - rect.y) / 2;
 	}
 
-	void update(const InputManager& input) {
+	void update(const InputManager& input, bool dead) {
 		bool somethingPressed = false;
-		if (input.space) {
-			if (hanging) {
+		if (!dead) {
+			if (input.space) {
+				if (hanging) {
+					somethingPressed = true;
+					velocityY = -0.40;
+					hanging = false;
+				}
+			}
+			if (input.rightArrow) {
 				somethingPressed = true;
-				velocityY = -0.40;
-				hanging = false;		
+				if (!moveCooldown) {
+					pos.x += 0.2;
+					right = true;
+					hanging = false;
+				}
 			}
-		} 
-		if (input.rightArrow) {
-			somethingPressed = true;
-			if (!moveCooldown) {
-				pos.x += 0.2;
-				right = true;
+			if (input.leftArrow) {
+				somethingPressed = true;
+				if (!moveCooldown) {
+					pos.x -= 0.2;
+					right = false;
+					hanging = false;
+				}
+			}
+			if (input.downArrow) {
 				hanging = false;
 			}
-		}
-		if (input.leftArrow) {
-			somethingPressed = true;
-			if (!moveCooldown) {
-				pos.x -= 0.2;
-				right = false;
-				hanging = false;
+			if (!somethingPressed) {
+				moveCooldown = false;
 			}
-		}
-		if (input.downArrow) {
-			hanging = false;
-		}
-		if (!somethingPressed) {
-			moveCooldown = false;
 		}
 		if (!hanging) {
 			moveCooldown = false;

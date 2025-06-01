@@ -96,7 +96,7 @@ public:
 				}
 			}
 		}
-		farmer.update(inputManager);
+		farmer.update(inputManager, farmer.getY() - lastGripY >= deathYDif);
 		if (farmer.getY() + 2.5 > fieldH) {
 			gameState = farmer.getY() - lastGripY < deathYDif ? GameState::Win : GameState::Lose;
 			return;
