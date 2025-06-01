@@ -2,61 +2,65 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
-    <ClCompile Include="..\src\Cinematic.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ConfigManager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Drawable.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Globals.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Presenter.cpp">
+    <ClCompile Include="..\src\Random.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\World.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\src\ConfigManager.cpp">
+      <Filter>src\Managers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\InputManager.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Random.cpp" />
+    <ClCompile Include="..\src\World.cpp">
+      <Filter>src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Presenter.cpp">
+      <Filter>src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Cinematic.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\Cinematic.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\ConfigManager.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Farmer.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Drawable.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Globals.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Random.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ConfigManager.h">
+      <Filter>include\Managers</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\Hole.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\InputManager.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Presenter.h">
-      <Filter>include</Filter>
+      <Filter>include\Managers</Filter>
     </ClInclude>
     <ClInclude Include="..\include\World.h">
-      <Filter>include</Filter>
+      <Filter>include\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\InputManager.h">
+      <Filter>include\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Presenter.h">
+      <Filter>include\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Cinematic.h">
+      <Filter>include\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Farmer.h">
+      <Filter>include\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameState.h">
-      <Filter>include</Filter>
+      <Filter>include\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Random.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -64,6 +68,18 @@
     </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{01fd5c7a-2dc5-4e26-b584-40e38692cc1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Managers">
+      <UniqueIdentifier>{680d707a-d74d-421e-8788-d0c8cbf21d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Managers">
+      <UniqueIdentifier>{322515f4-82d8-4a60-a389-71b6308d4a65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Game">
+      <UniqueIdentifier>{7165a59e-e655-44ef-b544-0a2b9aa7bdfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{7cea11e2-bb7f-4b31-853a-0011c8f641b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
