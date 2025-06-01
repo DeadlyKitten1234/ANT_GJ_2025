@@ -15,7 +15,7 @@ void Presenter::init() {
 
     SDL_Init(SDL_INIT_EVERYTHING);
     TTF_Init();
-    mainWindow = SDL_CreateWindow("TEMPLATE", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_W, SCREEN_H, 0);
+    mainWindow = SDL_CreateWindow("ANT_GJ_2025", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_W, SCREEN_H, 0);
     mainRenderer = SDL_CreateRenderer(mainWindow, -1, SDL_RENDERER_ACCELERATED);
 }
 

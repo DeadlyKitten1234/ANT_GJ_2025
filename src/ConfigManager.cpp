@@ -4,12 +4,11 @@
 namespace Config {
 const std::string cinematicBackgroundPath = "CinematicBackground";
 const std::string cinematicCropPath = "textures\\plant";
-void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture* out,
-                             std::vector<SDL_Rect>& cropRect, int screenW,
-                             int screenH) {
-	out = loadTexture(cinematicBackgroundPath, renderer);
-	std::ifstream in("assets\\" + cinematicBackgroundPath + ".bmp",
-	                 std::ios::binary);
+void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
+                             std::vector<SDL_Rect>& cropRect, int screenW, int screenH) {
+	
+	out = loadTexture(Config::cinematicBackgroundPath, renderer);
+	std::ifstream in("assets\\" + cinematicBackgroundPath + ".bmp", std::ios::binary);
 
 	int imgW, imgH;
 	in.seekg(std::ios::beg + 18);

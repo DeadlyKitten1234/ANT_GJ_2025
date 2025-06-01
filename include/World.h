@@ -2,6 +2,10 @@
 #include "Cinematic.h"
 #include "Presenter.h"
 
+enum class GameState {
+	Cinematic, Gameplay
+};
+
 class World {
 public:
 	World();
@@ -14,4 +18,5 @@ public:
 private:
 	Presenter presenter;
 	Cinematic cinematic;
+	GameState state;
 };

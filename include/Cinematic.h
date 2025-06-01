@@ -9,7 +9,7 @@ public:
 	~Cinematic();
 
 	void init(SDL_Renderer* renderer, int screenW, int screenH);
-	void draw(SDL_Renderer* renderer);
+	void draw();
 
 private:
 	std::vector<SDL_Rect> cropRects;
