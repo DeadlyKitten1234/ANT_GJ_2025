@@ -35,7 +35,7 @@ bool Cinematic::draw(SDL_Renderer* renderer) {
 			}
 		}
 	}
-	if (ticks > 300) {
+	if (ticks > 380) {
 		return true;
 	}
 
@@ -49,4 +49,5 @@ bool Cinematic::draw(SDL_Renderer* renderer) {
 	}
 	Presenter::drawObject(farmerLayer, &backgroundRect);
 	ticks++;
+	return false;
 }
