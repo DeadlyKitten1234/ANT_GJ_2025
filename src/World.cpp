@@ -8,8 +8,8 @@ World::~World() { }
 void World::init() {
 	presenter.init();
 	cinematic.init(presenter.getRenderer(), Presenter::SCREEN_W, Presenter::SCREEN_H);
-	farmer.init(presenter.getRenderer(), Presenter::SCREEN_W, Presenter::SCREEN_H);
-	state = GameState::Cinematic;
+	hole.init(presenter.getRenderer(), Presenter::SCREEN_W, Presenter::SCREEN_H);
+	state = GameState::Gameplay;
 }
 
 void World::draw() {
@@ -20,7 +20,8 @@ void World::draw() {
 		}
 		break;
 	case GameState::Gameplay:
-		farmer.draw(presenter.getRenderer());
+		hole.draw(presenter.getRenderer());
+		break;
 	default:
 		return;
 	}
@@ -31,9 +32,10 @@ void World::update() {
 	inputManager.getInput();
 	switch (state) {
 	case GameState::Cinematic:
-		farmer.update(inputManager);
-		return;
+		break;
 	case GameState::Gameplay:
+		hole.update(inputManager);
+		break;
 	default:
 		return;
 	}

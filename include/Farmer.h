@@ -15,6 +15,10 @@ public:
 		FALLING = 3,
 	};
 
+	int getY() {
+		return y;
+	}
+
 	void init(SDL_Renderer* renderer, int screenW, int screenH) {
 		texture = loadTexture("textures\\farmer", renderer);
 		rect.w = 96;
@@ -24,19 +28,27 @@ public:
 	}
 
 	void update(const InputManager& input) {
-		if (input.rightArrow) {
-			rect.x += 10;
-			right = true;
-		}
-		if (input.leftArrow) {
-			rect.x -= 10;
-			right = false;
-		}
 		if (hanging) {
 			if (input.space) {
 				velocityY = -15;
+				hanging = false;
 			}
-		} else {
+		} 
+		if (input.rightArrow) {
+			if (rect.x < Presenter::SCREEN_W - rect.w - 10) {
+				rect.x += 10;
+			}
+			right = true;
+			hanging = false;
+		}
+		if (input.leftArrow) {
+			if (rect.x > 10) {
+				rect.x -= 10;
+			}
+			right = false;
+			hanging = false;
+		}
+		if (!hanging) {
 			velocityY += 0.5;
 			y += velocityY;
 		}

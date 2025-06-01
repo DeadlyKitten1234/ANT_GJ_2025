@@ -2,7 +2,7 @@
 #include "Cinematic.h"
 #include "InputManager.h"
 #include "Presenter.h"
-#include "Farmer.h"
+#include "Hole.h"
 
 enum class GameState {
 	Cinematic, Gameplay
@@ -22,5 +22,5 @@ private:
 	Presenter presenter;
 	Cinematic cinematic;
 	GameState state;
-	Farmer farmer;
+	Hole hole;
 };
