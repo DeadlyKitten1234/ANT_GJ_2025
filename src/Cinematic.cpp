@@ -13,10 +13,10 @@ void Cinematic::init(SDL_Renderer* renderer, int screenW, int screenH) {
 }
 
 void Cinematic::draw() {
-	double swayingAngle = 5 * sin(ticks);
+	double swayingAngle = 0;
+	//5 * sin(0.1 * ticks);
 	Presenter::drawObject(background);
-	std::cout << cropRects.size() << '\n';
-	for (int i = 0; i < cropRects.size(); i++) {
+	for (int i = cropRects.size() - 1; i >= 0; i--) {
 		Presenter::drawObject(cropTexture, &cropRects[i], swayingAngle);
 	}
 	ticks++;

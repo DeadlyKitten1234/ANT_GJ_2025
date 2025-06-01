@@ -1,5 +1,5 @@
 #include "ConfigManager.h"
-
+#include <iostream>
 
 namespace Config {
 const std::string cinematicBackgroundPath = "CinematicBackground";
@@ -24,17 +24,17 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
 
 	for (int i = 0; i < imgH; i++) {
 		for (int j = 0; j < imgW; j++) {
-			char pxl[3];
-			in.read(pxl, 3);
-			if (pxl[2] == 0 && pxl[1] == 0 && pxl[0] == 0) {
+			unsigned char pxl[3];
+			in.read((char*)&pxl, 3);
+			if (pxl[0] == 0 && pxl[1] == 0 && pxl[2] == 255) {
 				// Crop
 				double cropH = double((horizonH - i) * biggestCropSz) / horizonH;
 				double cropW = cropH * cropAspectRatio;
 				cropsCnt++;
-				cropRect.push_back({int((j - cropW / 2) * screenMultW),
-				                    int((imgH - i - cropH) * screenMultH),
+				cropRect.push_back({int((j - cropW * 0.32) * screenMultW),
+				                    int((imgH - i - cropH * 0.97) * screenMultH),
 				                    int(cropW * screenMultW),
-				                    int(cropW * screenMultH)});
+				                    int(cropH * screenMultH)});
 			}
 		}
 		for (int j = 3 * imgW; j % 4 != 0; j++) {
