@@ -1,5 +1,6 @@
 #include "ConfigManager.h"
 #include <iostream>
+#include <Presenter.h>
 
 namespace Config {
 const std::string cinematicBackgroundPath = "textures\\CinematicBackground";
@@ -55,13 +56,15 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
 	}
 	in.close();
 }
-void readLevel(int screenW, std::vector<SDL_Rect>& rects, float& stPosX, float& stPosY, int& bottomY, int& tileSzOut) {
+
+void readLevel(std::vector<SDL_Rect>& rects, float& stPosX, float& stPosY, int& fieldW, int& fieldH, int& tileSzOut) {
 	std::ifstream in(levelPath);
 	int screenInTiles, levelW, levelH;
 	in >> screenInTiles >> levelW >> levelH;
-	double tileSz = screenW / screenInTiles;
+	double tileSz = Presenter::SCREEN_W / screenInTiles;
 	tileSzOut = tileSz;
-	bottomY = tileSz * levelH;
+	fieldW = levelW;
+	fieldH = levelH;
 	for (int i = 0; i < levelH; i++) {
 		for (int j = 0; j < levelW; j++) {
 			char cur;
@@ -71,8 +74,8 @@ void readLevel(int screenW, std::vector<SDL_Rect>& rects, float& stPosX, float& 
 				rects.push_back(newRect);
 			}
 			if (cur == 'O') {
-				stPosX = (i + 0.5);
-				stPosY = (j + 0.5);
+				stPosX = j + 0.5;
+				stPosY = i + 0.5;
 			}
 		}
 	}

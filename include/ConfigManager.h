@@ -21,7 +21,9 @@ extern const std::string winScreen;
 extern const std::string loseScreen;
 
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
-                             std::vector<SDL_Rect>& cropRect, int screenW, int screenH);
+                             std::vector<SDL_Rect>& cropRect, int screenW,
+                             int screenH);
 
-void readLevel(int screenW, std::vector<SDL_Rect>& rects, float& stPosX, float& stPosY, int& bottomY, int& tileSzOut);
-}; // namespace Config
+void readLevel(std::vector<SDL_Rect>& rects, float& stPosX, float& stPosY,
+               int& fieldW, int& fieldH, int& tileSzOut);
+} // namespace Config

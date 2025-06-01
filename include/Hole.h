@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 class Hole {
 public:
@@ -13,34 +14,29 @@ public:
 		bgrTexture = loadTexture(Config::holeBackgroundPath, renderer);
 		floorTexture = loadTexture(Config::holeFloorPath, renderer);
 		gripTexture = loadTexture(Config::gripPath, renderer);
-		Config::readLevel(Presenter::SCREEN_W, grips, farmer.getXRef(),
-		                  farmer.getYRef(), finishY, bgrTileSize);
 		farmer.init(renderer, screenW, screenH);
+		Config::readLevel(grips, farmer.getXRef(),
+		                  farmer.getYRef(), fieldW, fieldH, tileSize);
 		lastGripY = farmer.getY();
 	}
 	void draw(SDL_Renderer* renderer) {
-		int yOffset = -farmer.getY() % bgrTileSize;
-		if (yOffset > 0) {
-			yOffset -= bgrTileSize;
-		}
-		SDL_Rect bgrTileRect = {0, yOffset, bgrTileSize, bgrTileSize};
-		for (; bgrTileRect.y < (int)Presenter::SCREEN_H;
-		     bgrTileRect.y += bgrTileSize) {
-			for (bgrTileRect.x = 0; bgrTileRect.x < (int)Presenter::SCREEN_W;
-			     bgrTileRect.x += bgrTileSize) {
-				SDL_RenderCopy(renderer,
-				               farmer.getY() + bgrTileRect.y >= finishY ? floorTexture : bgrTexture,
-				               NULL, &bgrTileRect);
+		for (int x = 0; x < fieldW; x++) {
+			for (int y = -15; y < fieldH; y++) {
+				SDL_Rect rect = {
+				    x * tileSize,
+				    (y - farmer.getY()) * tileSize + Presenter::SCREEN_H / 2,
+					tileSize,
+					tileSize
+				};
+				SDL_RenderCopy(renderer, bgrTexture, NULL, &rect);
 			}
 		}
 		for (SDL_Rect gr : grips) {
-			if (!(gr.y + gr.h - farmer.getY() < 0 || gr.y - farmer.getY() > Presenter::SCREEN_H)) {
-				SDL_Rect newRect = gr;
-				newRect.y -= farmer.getY();
-				Presenter::drawObject(gripTexture, &newRect);
-			}
+			SDL_Rect newRect = gr;
+			newRect.y += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
+			Presenter::drawObject(gripTexture, &newRect);
 		}
-		farmer.draw(renderer);
+		farmer.draw(renderer, tileSize);
 	}
 	void update(const InputManager& inputManager) {
 		if (farmer.isHanging()) {
@@ -58,10 +54,11 @@ private:
 	SDL_Texture* gripTexture;
 	SDL_Texture* floorTexture;
 	Farmer farmer;
-	int bgrTileSize;
-	int finishY;
-	int lastGripY;
-	int deathYDif = 300;
+	int fieldW;
+	int fieldH;
+	int tileSize;
+	float deathYDif = 3.9;
+	float lastGripY;
 
 	std::vector<SDL_Rect> grips;
 };
