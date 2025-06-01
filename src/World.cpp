@@ -14,7 +14,7 @@ void World::init() {
 void World::draw() {
 	switch (state) { 
 	case GameState::Cinematic:
-		cinematic.draw();
+		cinematic.draw(presenter.getRenderer());
 		break;
 	default:
 		return;

@@ -3,12 +3,13 @@
 
 namespace Config {
 const std::string cinematicBackgroundPath = "CinematicBackground";
+const std::string cinematicLocationsPath = "assets\\CinematicBackground - Locations.bmp";
 const std::string cinematicCropPath = "textures\\plant";
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH) {
 	
 	out = loadTexture(Config::cinematicBackgroundPath, renderer);
-	std::ifstream in("assets\\" + cinematicBackgroundPath + ".bmp", std::ios::binary);
+	std::ifstream in(cinematicLocationsPath, std::ios::binary);
 
 	int imgW, imgH;
 	in.seekg(std::ios::beg + 18);
@@ -28,7 +29,7 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
 			in.read((char*)&pxl, 3);
 			if (pxl[0] == 0 && pxl[1] == 0 && pxl[2] == 255) {
 				// Crop
-				double cropH = double((horizonH - i) * biggestCropSz) / horizonH;
+				double cropH = lerp(1 - double(i) / horizonH, biggestCropSz, 10);
 				double cropW = cropH * cropAspectRatio;
 				cropsCnt++;
 				cropRect.push_back({int((j - cropW * 0.32) * screenMultW),
