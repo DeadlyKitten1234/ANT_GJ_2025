@@ -134,6 +134,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\src\Drawable.cpp" />
+    <ClCompile Include="..\src\Globals.cpp" />
+    <ClCompile Include="..\src\InputManager.cpp" />
+    <ClCompile Include="..\src\Presenter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Drawable.h" />
+    <ClInclude Include="..\include\Globals.h" />
+    <ClInclude Include="..\include\InputManager.h" />
+    <ClInclude Include="..\include\Presenter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
