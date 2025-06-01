@@ -45,7 +45,6 @@ void World::update() {
 		hole.update(inputManager, state);
 		break;
 	case GameState::Win:
-		curEndTicks++;
 		break;
 	case GameState::Lose:
 		curEndTicks++;
