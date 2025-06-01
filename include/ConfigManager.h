@@ -18,4 +18,6 @@ extern const std::string levelPath;
 
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH);
+
+void readLevel(int screenW, std::vector<SDL_Rect>& rects, int2& stPos, int& bottomY);
 }; // namespace Config
