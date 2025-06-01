@@ -63,6 +63,7 @@ target_compile_options(${PROJECT_NAME} PRIVATE
          #-Wno-padded
 			#-Wno-pre-c++23-compat
 			#-Werror
+			-Wno-c++11-narrowing
 		>
     $<$<CONFIG:Release>:
 
