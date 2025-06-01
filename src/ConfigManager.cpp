@@ -13,6 +13,7 @@ const std::string farmerLayerPathHole = "textures\\FarmerLayerHole";
 const std::string holeBackgroundPath = "textures\\HoleBackground";
 const std::string holeFloorPath = "textures\\HoleFloor";
 const std::string gripPath = "textures\\Grip";
+const std::string slipperyGripPath = "textures\\SlipperyGrip";
 const std::string levelPath = "assets\\level.txt";
 const std::string winScreen = "textures\\win";
 const std::string loseScreen = "textures\\lose";

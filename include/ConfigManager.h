@@ -17,6 +17,7 @@ extern const std::string holeBackgroundPath;
 extern const std::string levelPath;
 extern const std::string holeFloorPath;
 extern const std::string gripPath;
+extern const std::string slipperyGripPath;
 extern const std::string catPath;
 extern const std::string winScreen;
 extern const std::string loseScreen;
