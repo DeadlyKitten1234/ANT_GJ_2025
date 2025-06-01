@@ -14,6 +14,7 @@ public:
 		HANGING = 1,
 		JUMPING = 2,
 		FALLING = 3,
+		DEAD = 4,
 	};
 
 	float getX() const {
@@ -74,36 +75,38 @@ public:
 		//rect.y = (screenH - rect.y) / 2;
 	}
 
-	void update(const InputManager& input) {
+	void update(const InputManager& input, bool dead) {
 		bool somethingPressed = false;
-		if (input.space) {
-			if (hanging) {
+		if (!dead) {
+			if (input.space) {
+				if (hanging) {
+					somethingPressed = true;
+					velocityY = -0.40;
+					hanging = false;
+				}
+			}
+			if (input.rightArrow) {
 				somethingPressed = true;
-				velocityY = -0.40;
-				hanging = false;		
+				if (!moveCooldown) {
+					pos.x += 0.2;
+					right = true;
+					hanging = false;
+				}
 			}
-		} 
-		if (input.rightArrow) {
-			somethingPressed = true;
-			if (!moveCooldown) {
-				pos.x += 0.2;
-				right = true;
+			if (input.leftArrow) {
+				somethingPressed = true;
+				if (!moveCooldown) {
+					pos.x -= 0.2;
+					right = false;
+					hanging = false;
+				}
+			}
+			if (input.downArrow) {
 				hanging = false;
 			}
-		}
-		if (input.leftArrow) {
-			somethingPressed = true;
-			if (!moveCooldown) {
-				pos.x -= 0.2;
-				right = false;
-				hanging = false;
+			if (!somethingPressed) {
+				moveCooldown = false;
 			}
-		}
-		if (input.downArrow) {
-			hanging = false;
-		}
-		if (!somethingPressed) {
-			moveCooldown = false;
 		}
 		if (!hanging) {
 			moveCooldown = false;
@@ -111,10 +114,12 @@ public:
 			pos.y += velocityY;
 		}
 	}
-	void draw(SDL_Renderer* renderer, int tileSize) {
+	void draw(SDL_Renderer* renderer, bool dead, int tileSize) {
 		State state;
 		if (hanging) {
 			state = State::HANGING;
+		} else if (dead) {
+			state = State::DEAD;
 		} else {
 			if (velocityY > 0) {
 				state = State::FALLING;
@@ -148,6 +153,8 @@ private:
 			return {32, 0, 32, 48};
 		case State::FALLING:
 			return {32, 48, 32, 48};
+		case State::DEAD:
+			return {0, 96, 32, 48};
 		}
 		return {-1, -1, 1, 1};
 	}

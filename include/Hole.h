@@ -36,6 +36,10 @@ public:
 		isOnSlippery = false;
 	}
 
+	bool isFarmerDead() {
+		return farmer.getY() - lastGripY >= deathYDif;
+	}
+
 	void draw(SDL_Renderer* renderer) {
 		SDL_Rect topRect = { 0, -farmer.getY() * tileSize - Presenter::SCREEN_H / 2, Presenter::SCREEN_W, Presenter::SCREEN_H };
 		Presenter::drawObject(topTexture, &topRect);
@@ -68,7 +72,7 @@ public:
 			newRect.y += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
 			Presenter::drawObject(gripTexture, &newRect);
 		}
-		farmer.draw(renderer, tileSize);
+		farmer.draw(renderer, isFarmerDead(), tileSize);
 	}
 	void update(const InputManager& inputManager, GameState& gameState) {
 		if (farmer.isHanging()) {
@@ -82,6 +86,8 @@ public:
 		}
 		if (farmer.getY() - lastGripY < deathYDif) {
 			for (Grip gr : grips) {
+		if (!isFarmerDead()) {
+			for (int2 gr : grips) {
 				SDL_Rect collisionRect
 				    = {gr.pos.x * tileSize, gr.pos.y * tileSize, tileSize, tileSize};
 				collisionRect.y
@@ -110,9 +116,9 @@ public:
 				}
 			}
 		}
-		farmer.update(inputManager);
+		farmer.update(inputManager, isFarmerDead());
 		if (farmer.getY() + 2.5 > fieldH) {
-			gameState = farmer.getY() - lastGripY < deathYDif ? GameState::Win : GameState::Lose;
+			gameState = !isFarmerDead() ? GameState::Win : GameState::Lose;
 			return;
 		}
 	}
