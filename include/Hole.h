@@ -18,6 +18,7 @@ public:
 		gripTexture = loadTexture(Config::gripPath, renderer);
 		topTexture = loadTexture(Config::holeTop, renderer);
 		catTexture = loadTexture(Config::catPath, renderer);
+		slipperyTexture = loadTexture(Config::slipperyGripPath, renderer);
 		farmer.init(renderer, screenW, screenH);
 		Config::readLevel(grips, farmer.getXRef(), farmer.getYRef(), fieldW, fieldH, tileSize);
 		lastGripY = farmer.getY();
@@ -56,8 +57,7 @@ public:
 		}
 		for (int x = 0; x < fieldW + 1; x++) {
 			for (int y = fieldH; y < fieldH + 20; y++) {
-				SDL_Rect rect
-				    = {x * tileSize,
+				SDL_Rect rect = {x * tileSize,
 				       (y - farmer.getY()) * tileSize + Presenter::SCREEN_H / 2,
 				       tileSize, tileSize};
 				SDL_RenderCopy(renderer, floorTexture, NULL, &rect);
@@ -70,7 +70,7 @@ public:
 		for (Grip gr : grips) {
 			SDL_Rect newRect = { gr.pos.x * tileSize, gr.pos.y * tileSize, tileSize, tileSize };
 			newRect.y += Presenter::SCREEN_H / 2 - farmer.getY() * tileSize;
-			Presenter::drawObject(gripTexture, &newRect);
+			Presenter::drawObject((gr.isSlippery ? slipperyTexture : gripTexture), &newRect);
 		}
 		farmer.draw(renderer, isFarmerDead(), tileSize);
 	}
@@ -95,16 +95,14 @@ public:
 				collisionRect.w /= 2;
 				collisionRect.h /= 2;
 				if (gr.pos == lastGrip) {
-					if (!rectCollision(farmer.getCollisionRect(tileSize),
-					                   collisionRect)) {
+					if (!rectCollision(farmer.getCollisionRect(tileSize), collisionRect)) {
 						lastGrip = int2(-1, -1);
 					} else {
 						continue;
 					}
 				}
 
-				if (rectCollision(farmer.getCollisionRect(tileSize),
-				                  collisionRect)) {
+				if (rectCollision(farmer.getCollisionRect(tileSize), collisionRect)) {
 					farmer.setHanging(true);
 					farmer.setX(gr.pos.x + 0.5);
 					farmer.setY(gr.pos.y + 0.5);
@@ -124,6 +122,7 @@ public:
 private:
 	SDL_Texture* bgrTexture;
 	SDL_Texture* gripTexture;
+	SDL_Texture* slipperyTexture;
 	SDL_Texture* floorTexture;
 	SDL_Texture* topTexture;
 	SDL_Texture* catTexture;
