@@ -4,7 +4,7 @@
 namespace Config {
 const std::string cinematicBackgroundPath = "CinematicBackground";
 const std::string cinematicBackgroundHolePath = "CinematicBackgroundHole";
-const std::string cinematicLocationsPath = "assets\\CinematicBackground - Locations.bmp";
+const std::string cinematicLocationsPath = "assets\\CinematicBackground-Locations.bmp";
 const std::string cinematicCropPath = "textures\\plant";
 void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
                              std::vector<SDL_Rect>& cropRect, int screenW, int screenH) {
@@ -37,6 +37,7 @@ void readCinematicBackground(SDL_Renderer* renderer, SDL_Texture*& out,
 				                    int((imgH - i - cropH * 0.97) * screenMultH),
 				                    int(cropW * screenMultW),
 				                    int(cropH * screenMultH)});
+				std::cout << imgH - i << ' ' << j << ' ' << screenMultW << ' ' << screenMultH << '\n';
 			}
 		}
 		for (int j = 3 * imgW; j % 4 != 0; j++) {

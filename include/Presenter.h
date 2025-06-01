@@ -20,6 +20,6 @@ public:
 	static void drawObject(SDL_Texture* texture) {
 		drawObject(texture, nullptr, 0);
 	}
-    static void drawObject(SDL_Texture* texture, SDL_Rect* rect, double angle);
+    static void drawObject(SDL_Texture* texture, SDL_Rect* rect = nullptr, double angle = 0);
     static void drawObject(const Drawable& drawable);
 };
