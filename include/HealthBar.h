@@ -16,6 +16,9 @@ public:
 	void decreaseLives() {
 		lives--;
 	}
+	void setLives(int x) {
+		lives = x;
+	}
 
 	void init(SDL_Renderer* renderer) {
 		heartTexture = loadTexture(Config::heart, renderer);
@@ -37,7 +40,7 @@ private:
 	SDL_Texture* heartTexture;
 	SDL_Texture* brokenHeartTexture;
 
-	SDL_Rect rect = {0, 0, 100, 100};
+	SDL_Rect rect = {0, 0, 50, 50};
 
 	int lives = HEARTS_COUNT;
 };

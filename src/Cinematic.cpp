@@ -36,7 +36,7 @@ bool Cinematic::draw(SDL_Renderer* renderer) {
 			}
 		}
 	}
-	if (ticks > 1) {
+	if (ticks > 500) {
 		return true;
 	}
 

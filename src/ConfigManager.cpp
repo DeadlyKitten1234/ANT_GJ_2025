@@ -76,8 +76,8 @@ void readLevel(std::vector<Grip>& grips, float& stPosX, float& stPosY, int& fiel
 		for (int j = 0; j < levelW; j++) {
 			char cur;
 			in >> cur;
-			if (cur == 'O' || cur == '#' || cur == '*') {
-				grips.push_back(Grip(int2(j, i), cur == '*'));
+			if (cur == 'O' || cur == '#' || cur == '*' || cur == 'C') {
+				grips.push_back(Grip(int2(j, i), cur == '*', cur == 'C' || cur == 'O'));
 			}
 			if (cur == 'O') {
 				stPosX = j + 0.5;

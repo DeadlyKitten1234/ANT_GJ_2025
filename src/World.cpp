@@ -54,7 +54,7 @@ void World::update() {
 	}
 	if (curEndTicks >= endTicks) {
 		curEndTicks = 0;
-		hole.reset();
+		hole.reset(true);
 		state = GameState::Gameplay;
 	}
 }
