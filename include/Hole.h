@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "GameState.h"
 
 class Hole {
 public:
@@ -53,11 +54,12 @@ public:
 		}
 		farmer.draw(renderer, tileSize);
 	}
-	void update(const InputManager& inputManager) {
+	void update(const InputManager& inputManager, GameState& gameState) {
 		if (farmer.isHanging()) {
 			lastGripY = farmer.getY();
 		} else {
 			if (farmer.getY() - lastGripY >= deathYDif) {
+				gameState = GameState::Lose;
 				return;
 			}
 		}
@@ -78,6 +80,10 @@ public:
 			}
 		}
 		farmer.update(inputManager);
+		if (farmer.getY() > fieldH) {
+			gameState = GameState::Win;
+			return;
+		}
 	}
 
 private:
@@ -89,7 +95,7 @@ private:
 	int fieldW;
 	int fieldH;
 	int tileSize;
-	float deathYDif = 115;
+	float deathYDif = 6;
 	float lastGripY;
 	int2 lastGrip;
 
