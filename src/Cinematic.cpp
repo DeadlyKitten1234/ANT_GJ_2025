@@ -20,18 +20,18 @@ void Cinematic::draw(SDL_Renderer* renderer) {
 	}
 	if (ticks == 280) {
 		//Hole appears
-		//delete background;
-		//background = loadTexture(Config::cinematicBackgroundHolePath, renderer);
-		//int holeCenterX = 634 * Presenter::SCREEN_W / 738;
-		//int holeCenterY = 356 * Presenter::SCREEN_H / 414;
-		//for (int i = 0; i < cropRects.size(); i++) {
-		//	int dx = cropRects[i].x - holeCenterX;
-		//	int dy = (cropRects[i].y - holeCenterY) * 2;
-		//	if (dx * dx + dy * dy < 207 * 207) {
-		//		cropRects.erase(cropRects.begin() + i);
-		//		i--;
-		//	}
-		//}
+		background = loadTexture(Config::cinematicBackgroundHolePath, renderer);
+		double multX = (double)Presenter::SCREEN_W / 738, multY = (double)Presenter::SCREEN_H / 414;
+		int holeCenterX = 634 * multX;
+		int holeCenterY = 356 * multY;
+		for (int i = 0; i < cropRects.size(); i++) {
+			int dx = (cropRects[i].x - holeCenterX) / multX;
+			int dy = (cropRects[i].y - holeCenterY) * 2 / multY;
+			if (dx * dx + dy * dy < 220 * 220) {
+				cropRects.erase(cropRects.begin() + i);
+				i--;
+			}
+		}
 	}
 
 	SDL_Rect backgroundRect = { offsetX, offsetY, Presenter::SCREEN_W, Presenter::SCREEN_H };
