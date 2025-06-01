@@ -71,11 +71,9 @@ public:
 		bool somethingPressed = false;
 		if (input.space) {
 			if (hanging) {
-			somethingPressed = true;
-				if (!moveCooldown) {
-					velocityY = -0.45;
-					hanging = false;
-				}
+				somethingPressed = true;
+				velocityY = -0.40;
+				hanging = false;		
 			}
 		} 
 		if (input.rightArrow) {
@@ -98,7 +96,8 @@ public:
 			moveCooldown = false;
 		}
 		if (!hanging) {
-			velocityY += 0.02;
+			moveCooldown = false;
+			velocityY += 0.023;
 			pos.y += velocityY;
 		}
 	}
