@@ -28,9 +28,9 @@ void World::update() {
 	inputManager.getInput();
 	switch (state) {
 	case GameState::Cinematic:
+		farmer.update(inputManager);
 		return;
 	case GameState::Gameplay:
-		farmer.update(inputManager);
 	default:
 		return;
 	}
